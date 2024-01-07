@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle, TextStyle } from "react-native";
+import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from "react-native";
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 interface WelcomeStylesProps {
@@ -9,10 +9,8 @@ interface WelcomeStylesProps {
   searchWrapper: ViewStyle;
   searchInput: TextStyle;
   searchBtn: ViewStyle;
-  searchBtnImage: ViewStyle;
+  searchBtnImage: ImageStyle;
   tabsContainer: ViewStyle;
-  tab: (activeJobType: any, item: any) => ViewStyle;
-  tabText: (activeJobType: any, item: any) => TextStyle;
 }
 
 const styles = StyleSheet.create<WelcomeStylesProps>({
@@ -69,18 +67,34 @@ const styles = StyleSheet.create<WelcomeStylesProps>({
     width: "100%",
     marginTop: SIZES.medium,
   },
-  
-  tab: (activeJobType, item) => ({
+});
+
+// tab: (activeJobType: any, item: any) => ViewStyle;
+  // tabText: (activeJobType: any, item: any) => TextStyle;
+
+  type StylesProps = {
+    paddingVertical: number;
+    paddingHorizontal: number;
+    borderRadius: number;
+    borderWidth: number;
+    borderColor: string;
+  }
+  type StylesProps2 = {
+    fontFamily: string;
+    color: string;
+  }
+  export const tab =  (activeJobType: string, item: string): StylesProps => ({
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
     borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
-  }) as ViewStyle,
-  tabText: (activeJobType, item) => ({
+  } ) 
+
+
+  export const tabText =  (activeJobType: string, item: string): StylesProps2 => ({
     fontFamily: FONT.medium,
     color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
-  }) as TextStyle,
-});
+  }) 
 
 export default styles;

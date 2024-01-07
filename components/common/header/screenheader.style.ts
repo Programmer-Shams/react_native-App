@@ -28,4 +28,5 @@ const dynamicStyles = (dimension: number): ImageStyle => ({
   borderRadius: SIZES.small / 1.25,
 });
 
+
 export { styles, dynamicStyles };
